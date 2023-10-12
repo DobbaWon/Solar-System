@@ -5,8 +5,12 @@ public class Object{
     private double distance; // Set to 0 if it is the sun.
     private double angle; // Set to 0 if it is the sun.
     private String colour;
+    private int x; // Set to 0 if it is the sun.
+    private int y; // Set to 0 if it is the sun.
 
-    public Object(double diameter, double distance, double angle, String colour){
+    public Object(int x, int y, double diameter, double distance, double angle, String colour){
+        this.x = x;
+        this.y = y;
         this.diameter = diameter;
         this.distance = distance;   
         this.angle = angle;
@@ -24,5 +28,23 @@ public class Object{
     }
     public String getColour(){
         return colour;
+    }
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
+
+    public void setX(int value){
+        this.x = value;
+    }
+
+    public void setY(int value){
+        this.y = value;
+    }
+
+    public void setAngle(double value){
+        this.angle = value;
     }
 }
