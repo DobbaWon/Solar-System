@@ -8,9 +8,8 @@ public class Main{
         ArrayList<CelestialBody> planets = new ArrayList<CelestialBody>();
         ArrayList<Moon> moons = new ArrayList<Moon>();
 
-        // Lets also have 2 more lists for the Asteroid Belt, and also background stars:
+        // Lets also have another list sfor the Asteroid Belt
         ArrayList<CelestialBody> asteroidBelt = new ArrayList<CelestialBody>();
-        ArrayList<CelestialBody> stars = new ArrayList<CelestialBody>();
 
         // Initiating the classes:
         SolarSystem solarSystem = new SolarSystem(2000, 1000);
@@ -26,30 +25,11 @@ public class Main{
             // Drawing the Sun:
             solarSystem.drawSolarObject(sun.getDistance(), sun.getAngle(), sun.getDiameter(), sun.getColour());
             
-            // Drawing and orbiting all the Planets, including Saturn's rings:
-            for (int i = 0; i < planets.size(); i++){
-                CelestialBody currentPlanet = planets.get(i); // Saving the current planet in the loop to use with the following values:
-                solarSystem.drawSolarObject(currentPlanet.getDistance(), currentPlanet.getAngle(), currentPlanet.getDiameter(), currentPlanet.getColour());
-                
-                planets.get(i).orbit(); // Orbiting the planet stored in the ArrayList.
-            }
+            updatePlanets(solarSystem, planets);
 
-            // Drawing and orbiting all of the Moons:
-            for (int i = 0; i < moons.size(); i++){
-                Moon currentMoon = moons.get(i); // Saving the current moon in the loop to use with the following values:
-                solarSystem.drawSolarObjectAbout(currentMoon.getDistance(), currentMoon.getAngle(), currentMoon.getDiameter(), currentMoon.getColour(), currentMoon.getPlanetDistance(), currentMoon.getPlanetAngle());
-                
-                moons.get(i).orbit(); // Orbiting the moon stored in the ArrayList.
-            }
-
+            updateMoons(solarSystem, moons);
             
-            // Drawing all of the Asteroids:
-            for (int i = 0; i < asteroidBelt.size(); i++){
-                CelestialBody currentAsteroid = asteroidBelt.get(i); // Saving the current asteroid in the loop to use with the following values:
-                solarSystem.drawSolarObject(currentAsteroid.getDistance(), currentAsteroid.getAngle(), currentAsteroid.getDiameter(), currentAsteroid.getColour());
-                
-                asteroidBelt.get(i).orbit();
-            }
+            updateAsteroids(solarSystem, asteroidBelt);
             
             solarSystem.finishedDrawing();
         }
@@ -92,4 +72,35 @@ public class Main{
             asteroidBelt.add(new CelestialBody(2, "GREY", 215, 0.3, i*(360/50)));
         }
     }
+
+    // A method for drawing and orbiting all the Planets, including Saturn's rings:
+    private static void updatePlanets(SolarSystem solarSystem, ArrayList<CelestialBody> planets){
+        for (int i = 0; i < planets.size(); i++){
+            CelestialBody currentPlanet = planets.get(i); // Saving the current planet in the loop to use with the following values:
+            solarSystem.drawSolarObject(currentPlanet.getDistance(), currentPlanet.getAngle(), currentPlanet.getDiameter(), currentPlanet.getColour());
+            
+            planets.get(i).orbit(); // Orbiting the planet stored in the ArrayList.
+        }
+    }
+
+    // A method for drawing and orbiting all of the Moons:
+    private static void updateMoons(SolarSystem solarSystem, ArrayList<Moon> moons){
+        for (int i = 0; i < moons.size(); i++){
+            Moon currentMoon = moons.get(i); // Saving the current moon in the loop to use with the following values:
+            solarSystem.drawSolarObjectAbout(currentMoon.getDistance(), currentMoon.getAngle(), currentMoon.getDiameter(), currentMoon.getColour(), currentMoon.getPlanetDistance(), currentMoon.getPlanetAngle());
+            
+            moons.get(i).orbit(); // Orbiting the moon stored in the ArrayList.
+        }
+    }
+    
+    // A method for drawing and orbiting all of the Asteroids:
+    private static void updateAsteroids(SolarSystem solarSystem, ArrayList<CelestialBody> asteroidBelt){
+        for (int i = 0; i < asteroidBelt.size(); i++){
+            CelestialBody currentAsteroid = asteroidBelt.get(i); // Saving the current asteroid in the loop to use with the following values:
+            solarSystem.drawSolarObject(currentAsteroid.getDistance(), currentAsteroid.getAngle(), currentAsteroid.getDiameter(), currentAsteroid.getColour());
+            
+            asteroidBelt.get(i).orbit();
+        }
+    }
 }
+
