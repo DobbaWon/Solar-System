@@ -23,6 +23,15 @@ public class CelestialBody{
         this.rotationVelocity = rotationVelocity;
     }
 
+    // Another class constructor, used by stars and asteroids, to allow them to enter their own angle, as they won't orbit:
+    public CelestialBody(double diameter, String colour, double distance, double rotationVelocity, double angle){
+        this.diameter = diameter;
+        this.distance = distance;
+        this.colour = colour;
+        this.angle = angle;
+        this.rotationVelocity = rotationVelocity;
+    }
+
     public void orbit(){
         angle += rotationVelocity;
     }
@@ -39,6 +48,4 @@ public class CelestialBody{
     public String getColour(){
         return colour;
     }
-    
-    
 }
