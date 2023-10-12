@@ -2,10 +2,12 @@ public class Main{
     public static void main(String[] args){
         // Initiating my classes:
         SolarSystem solarSystem = new SolarSystem(1000, 1000);
-        Sun sun = new Sun();
-        Planet earth = new Planet(100, 0, 1, "BLUE");
-        Moon moon = new Moon(50, 0, "GREY");
-        Planet mars = new Planet(200, 0, 0.6, "RED");
+        
+        // The sun will not be able to move, so we can simply use a SolarObject class;
+        CelestialBody sun = new CelestialBody(50, "YELLOW", 0, 0);
+        CelestialBody earth = new CelestialBody(30, "BLUE", 100, 2);
+        CelestialBody moon = new CelestialBody(15, "GREY", 50, 4);
+        CelestialBody mars = new CelestialBody(30, "RED", 200, 1);
 
         while (1 == 1){
             // Drawing all of the objects:
