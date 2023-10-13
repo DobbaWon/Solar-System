@@ -8,13 +8,13 @@ public class Main{
         ArrayList<CelestialBody> planets = new ArrayList<CelestialBody>();
         ArrayList<Moon> moons = new ArrayList<Moon>();
 
-        // Lets also have another list sfor the Asteroid Belt
+        // Lets also have another list for the Asteroid Belt
         ArrayList<CelestialBody> asteroidBelt = new ArrayList<CelestialBody>();
 
         // Initiating the classes:
         SolarSystem solarSystem = new SolarSystem(2000, 1000);
         
-        // The sun will not be able to move, so we can simply use a SolarObject class;
+        // The sun will not be able to move, so we can simply use a CelestialBody class;
         CelestialBody sun = new CelestialBody(100, "YELLOW", 0, 0);
 
         populatePlanetsAndMoons(planets, moons);
@@ -55,9 +55,10 @@ public class Main{
         moons.add(new Moon(10, "GREY", 45, 3.5, planets.get(4)));
 
         // Saturns Rings:
-        planets.add(new CelestialBody(80, "GREY", 350, 1.4));
+        
         planets.add(new CelestialBody(95, "GREY", 350, 1.4));
-        planets.add(new CelestialBody(85, "BLACK", 350, 1.4));
+        planets.add(new CelestialBody(85, "GREY", 350, 1.4));
+        planets.add(new CelestialBody(80, "BLACK", 350, 1.4));
 
         planets.add(new CelestialBody(70, "YELLOW", 350, 1.4)); // Saturn
 
