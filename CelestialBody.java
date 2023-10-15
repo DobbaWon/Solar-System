@@ -6,22 +6,15 @@
 public class CelestialBody{
     private double diameter;
     private String colour;
-    private double distance;
 
-    public CelestialBody(double diameter, String colour, double distance){
+    public CelestialBody(double diameter, String colour){
         this.diameter = diameter;
-        this.distance = distance;
         this.colour = colour;
     }
 
     // A getter method for the diameter property:
     public double getDiameter(){
         return diameter;
-    }
-    
-    // A getter method for the distance property:
-    public double getDistance(){
-        return distance;
     }
 
     // A getter method for the colour property:

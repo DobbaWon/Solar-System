@@ -4,8 +4,7 @@ public class Sun extends CelestialBody{
         /* Parameters:
          * Diameter = 100
          * Colour = Yellow
-         * Distance = 0
          */
-        super(100, "YELLOW", 0);      
+        super(100, "YELLOW");      
     }
 }
