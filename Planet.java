@@ -24,4 +24,9 @@ public class Planet extends CelestialBody{
     public double getAngle(){
         return angle;
     }
+
+    // A setter method for the angle property, used by the Asteroid class:
+    public void setAngle(double value){
+        this.angle = value;
+    }
 }
