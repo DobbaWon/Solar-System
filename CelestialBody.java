@@ -1,50 +1,30 @@
-// This class provides a universal template for any object in the Solar System.
-
+ /* This class provides a universal template for any object in the Solar System.
+  * The diameter property is simply the diameter of the object.
+  * The colour property is simply the colour of the object.
+  * The distance property is the distance from the object to the centre of the screen.
+ */
 public class CelestialBody{
-
     private double diameter;
     private String colour;
-    private double angle;
-    private double rotationVelocity;
     private double distance;
 
-    public CelestialBody(double diameter, String colour, double distance, double rotationVelocity){
-        /* The following values will be set to 0 for the sun:
-         * x
-         * y
-         * rotation velocity
-         * distance
-         * angle */
-
+    public CelestialBody(double diameter, String colour, double distance){
         this.diameter = diameter;
         this.distance = distance;
         this.colour = colour;
-        this.angle = 0; // The angle starts at 0 and increases each time the orbit() method is called.
-        this.rotationVelocity = rotationVelocity;
     }
 
-    // Another class constructor, used by stars and asteroids, to allow them to enter their own angle, as they won't orbit:
-    public CelestialBody(double diameter, String colour, double distance, double rotationVelocity, double angle){
-        this.diameter = diameter;
-        this.distance = distance;
-        this.colour = colour;
-        this.angle = angle;
-        this.rotationVelocity = rotationVelocity;
-    }
-
-    public void orbit(){
-        angle += rotationVelocity;
-    }
-
+    // A getter method for the diameter property:
     public double getDiameter(){
         return diameter;
     }
+    
+    // A getter method for the distance property:
     public double getDistance(){
         return distance;
     }
-    public double getAngle(){
-        return angle;
-    }
+
+    // A getter method for the colour property:
     public String getColour(){
         return colour;
     }
