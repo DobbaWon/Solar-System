@@ -2,6 +2,10 @@ import java.util.ArrayList; // import the ArrayList class
 
 import javax.swing.CellEditor;
 
+/** The Main class
+ * This stores all of the Planets, Moons and Asteroids, and handles displaying and updating them.
+ * @author Charlie Dobson
+ */
 public class Main{
     public static void main(String[] args){
         // First we create 2 new lists for the planets and moons, for easier drawing.
@@ -17,6 +21,9 @@ public class Main{
         // The sun will not be able to move, so we can simply use a CelestialBody class;
         Sun sun = new Sun();
 
+        // We are going to have 1 Comet roaming the Solar System:
+        Comet comet = new Comet(5, "WHITE", 250, 2);
+
         populatePlanetsAndMoons(planets, moons);
         populateAsteroidBelt(asteroidBelt);
 
@@ -25,17 +32,24 @@ public class Main{
             // Drawing the Sun:
             solarSystem.drawSolarObject(0, 0, sun.getDiameter(), sun.getColour()); // The Sun has an angle and distance of 0.
             
+            solarSystem.drawSolarObject(comet.getDistance(), comet.getAngle(), comet.getDiameter(), comet.getColour());
+            
             updatePlanets(solarSystem, planets);
 
             updateMoons(solarSystem, moons);
             
             updateAsteroids(solarSystem, asteroidBelt);
+
+            comet.orbit();
             
             solarSystem.finishedDrawing();
         }
     }
 
-    // This method simply allows the Main method to have more space and less clutter, by isolating this code here:
+    /** This method simply allows the Main method to have more space and less clutter, by isolating this code here:
+     * @param planets - The list of planets we are appending to 
+     * @param moons - The list of moons we are appending to
+     */
     private static void populatePlanetsAndMoons(ArrayList<Planet> planets, ArrayList<Moon> moons){
         // Creating all the planets and moons:
         planets.add(new Planet(30, "BLUE", 150, 2)); // Earth
@@ -65,14 +79,20 @@ public class Main{
         planets.add(new Planet(50, "BLUE", 450, 1)); // Uranus
     }
 
-    // This method populates the AsteroidBelt with 51 small asteroids
+    /** This method populates the AsteroidBelt with 51 small asteroids
+     * @param asteroidBelt - The list of asteroids we are appending to
+     */
     private static void populateAsteroidBelt(ArrayList<Asteroid> asteroidBelt){
         for (int i = 0; i < 51; i++){
             asteroidBelt.add(new Asteroid(2, "GREY", 215, 0.3, i*(360/50)));
         }
     }
 
-    // A method for drawing and orbiting all the Planets, including Saturn's rings:
+    /** A method for drawing and orbiting all the Planets, including Saturn's rings:
+     * @param solarSystem - an instance of the solarSystem class (the window) to be drawn onto
+     * @param planets - the list of planets we are drawing from and updating
+     */
+
     private static void updatePlanets(SolarSystem solarSystem, ArrayList<Planet> planets){
         for (int i = 0; i < planets.size(); i++){
             Planet currentPlanet = planets.get(i); // Saving the current planet in the loop to use with the following values:
@@ -82,7 +102,10 @@ public class Main{
         }
     }
 
-    // A method for drawing and orbiting all of the Moons:
+    /** A method for drawing and orbiting all of the Moons:
+     * @param solarSystem - an instance of the solarSystem class (the window) to be drawn onto
+     * @param moons - the list of moons we are drawing from and updating
+     */
     private static void updateMoons(SolarSystem solarSystem, ArrayList<Moon> moons){
         for (int i = 0; i < moons.size(); i++){
             Moon currentMoon = moons.get(i); // Saving the current moon in the loop to use with the following values:
@@ -92,7 +115,10 @@ public class Main{
         }
     }
     
-    // A method for drawing and orbiting all of the Asteroids:
+    /** A method for drawing and orbiting all of the Asteroids:
+     * @param solarSystem - an instance of the solarSystem class (the window) to be drawn onto
+     * @param asteroidBelt - the list of asteroids we are drawing from and updating
+     */
     private static void updateAsteroids(SolarSystem solarSystem, ArrayList<Asteroid> asteroidBelt){
         for (int i = 0; i < asteroidBelt.size(); i++){
             Asteroid currentAsteroid = asteroidBelt.get(i); // Saving the current asteroid in the loop to use with the following values:
